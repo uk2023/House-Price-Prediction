@@ -7,51 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/19_27qS5SMcV1jPzV_kxG64XeHRZ7a6xO
 """
 
-# Import necessary libraries
-import numpy as np
-import pandas as pd
-from sklearn.datasets import fetch_california_housing
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
-import matplotlib.pyplot as plt
-
-# Step 1: Load the California Housing dataset
-california = fetch_california_housing()
-data = pd.DataFrame(california.data, columns=california.feature_names)
-target = pd.DataFrame(california.target, columns=['MEDV'])
-
-# Step 2: Split the data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(data, target, test_size=0.2, random_state=42)
-
-# Step 3: Create a Linear Regression model
-model = LinearRegression()
-
-# Step 4: Fit the model to the training data
-model.fit(X_train, y_train)
-
-# Step 5: Make predictions on the test set
-y_pred = model.predict(X_test)
-
-# Step 6: Evaluate the model
-mse = mean_squared_error(y_test, y_pred)
-r2 = r2_score(y_test, y_pred)
-
-# Step 7: Print the model's performance metrics
-print("House Price Prediction Model")
-print("----------------------------")
-print(f"Mean Squared Error (MSE): {mse:.2f}")
-print(f"R-squared (R2): {r2:.2f}")
-print("----------------------------")
-print("Model Training Complete.")
-
-# Step 8: Visualize the results with a scatter plot
-plt.scatter(y_test, y_pred)
-plt.xlabel("Actual House Prices")
-plt.ylabel("Predicted House Prices")
-plt.title("Actual Prices vs. Predicted Prices")
-plt.show()
-
 #Import necessary libraries
 import numpy as np
 import pandas as pd
